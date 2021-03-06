@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const session = require("express-session");
@@ -13,7 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
     store: store,
-    secret: "secret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
